@@ -12,4 +12,9 @@ defmodule CosgodaWeb.Schema.BasicTypes do
     field :name, :string
     field :description, :string
   end
+
+  input_object :update_entry_params do
+    field :name, :string
+    field :description, :string
+  end
 end

@@ -24,6 +24,13 @@ defmodule CosgodaWeb.Schema do
       resolve &Resolvers.Entries.create/3
     end
 
+    @desc "Update existed entry"
+    field :update_entry, :entry do
+      arg :id, non_null(:id)
+      arg :params, non_null(:update_entry_params)
+      resolve &Resolvers.Entries.update/3
+    end
+
     @desc "Remove selected"
     field :delete_entry, :entry do
       arg :id, non_null(:id)

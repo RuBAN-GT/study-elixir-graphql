@@ -73,6 +73,7 @@ defmodule Cosgoda.Entries do
     |> Entry.changeset(attrs)
     |> Repo.update()
   end
+  def update(nil, _), do: {:error, "Entry not found"}
 
   @doc """
   Deletes a Entry.
@@ -89,6 +90,7 @@ defmodule Cosgoda.Entries do
   def delete(%Entry{} = entry) do
     Repo.delete(entry)
   end
+  def delete(nil), do: {:error, "Entry already deleted"}
 
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking entry changes.

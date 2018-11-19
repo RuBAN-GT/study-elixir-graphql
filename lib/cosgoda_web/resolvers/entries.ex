@@ -1,5 +1,5 @@
 defmodule CosgodaWeb.Resolvers.Entries do
-  alias Cosgoda.Entries, as: Context
+  alias Cosgoda.Context.Entries, as: Context
 
   def list(_parent, _args, _resolution) do
     {:ok, Context.list}
@@ -21,7 +21,7 @@ defmodule CosgodaWeb.Resolvers.Entries do
   end
 
   def update(_parent, %{id: id, params: params}, _resolution) do
-    Context.get(id) |> Context.update params
+    Context.get(id) |> Context.update(params)
   end
 
   def delete(_parent, %{id: id}, _resolution) do

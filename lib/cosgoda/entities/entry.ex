@@ -1,4 +1,4 @@
-defmodule Cosgoda.Entries.Entry do
+defmodule Cosgoda.Entity.Entry do
   use Ecto.Schema
   import Ecto.Changeset
 

@@ -21,6 +21,8 @@ defmodule Cosgoda.Context.Users do
     Repo.all(User)
   end
 
+  def get(id), do: Repo.get(User, id)
+
   @doc """
   Gets a single user.
 
@@ -28,28 +30,28 @@ defmodule Cosgoda.Context.Users do
 
   ## Examples
 
-      iex> get_user!(123)
+      iex> get!(123)
       %User{}
 
-      iex> get_user!(456)
+      iex> get!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get!(id), do: Repo.get!(User, id)
 
   @doc """
   Creates a user.
 
   ## Examples
 
-      iex> create_user(%{field: value})
+      iex> create(%{field: value})
       {:ok, %User{}}
 
-      iex> create_user(%{field: bad_value})
+      iex> create(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_user(attrs \\ %{}) do
+  def create(attrs \\ %{}) do
     %User{}
     |> User.changeset(attrs)
     |> Repo.insert()
@@ -60,14 +62,14 @@ defmodule Cosgoda.Context.Users do
 
   ## Examples
 
-      iex> update_user(user, %{field: new_value})
+      iex> update(user, %{field: new_value})
       {:ok, %User{}}
 
-      iex> update_user(user, %{field: bad_value})
+      iex> update(user, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_user(%User{} = user, attrs) do
+  def update(%User{} = user, attrs) do
     user
     |> User.changeset(attrs)
     |> Repo.update()
@@ -78,14 +80,14 @@ defmodule Cosgoda.Context.Users do
 
   ## Examples
 
-      iex> delete_user(user)
+      iex> delete(user)
       {:ok, %User{}}
 
-      iex> delete_user(user)
+      iex> delete(user)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_user(%User{} = user) do
+  def delete(%User{} = user) do
     Repo.delete(user)
   end
 
@@ -94,11 +96,11 @@ defmodule Cosgoda.Context.Users do
 
   ## Examples
 
-      iex> change_user(user)
+      iex> change(user)
       %Ecto.Changeset{source: %User{}}
 
   """
-  def change_user(%User{} = user) do
+  def change(%User{} = user) do
     User.changeset(user, %{})
   end
 end

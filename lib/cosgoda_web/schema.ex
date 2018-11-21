@@ -1,8 +1,8 @@
 defmodule CosgodaWeb.Schema do
   use Absinthe.Schema
 
-  import_types CosgodaWeb.Schema.Entries
-  import_types CosgodaWeb.Schema.Users
+  import_types CosgodaWeb.EntriesSchema
+  import_types CosgodaWeb.UsersSchema
 
   query do
     import_fields :entry_query

@@ -1,5 +1,5 @@
-defmodule CosgodaWeb.Resolvers.Entries do
-  alias Cosgoda.Context.Entries, as: Context
+defmodule CosgodaWeb.EntriesResolver do
+  alias Cosgoda.EntriesContext, as: Context
 
   def list(_parent, _args, _resolution) do
     {:ok, Context.list}

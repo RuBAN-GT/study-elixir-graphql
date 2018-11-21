@@ -1,12 +1,11 @@
-defmodule Cosgoda.Context.Users do
+defmodule Cosgoda.UsersContext do
   @moduledoc """
-  The Context.Users context.
+  The Users context.
   """
 
   import Ecto.Query, warn: false
   alias Cosgoda.Repo
-
-  alias Cosgoda.Entity.User
+  alias Cosgoda.User
 
   @doc """
   Returns the list of users.

@@ -1,5 +1,5 @@
-defmodule CosgodaWeb.Schema.Users do
-  alias CosgodaWeb.Resolvers
+defmodule CosgodaWeb.UsersSchema do
+  alias CosgodaWeb.UsersResolver, as: Resolver
 
   use Absinthe.Schema.Notation
 
@@ -15,7 +15,7 @@ defmodule CosgodaWeb.Schema.Users do
   object :user_query do
     @desc "Get available users"
     field :users, list_of(:user) do
-      resolve &Resolvers.Users.list/3
+      resolve &Resolver.list/3
     end
   end
 end

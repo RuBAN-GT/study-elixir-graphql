@@ -1,11 +1,11 @@
-defmodule Cosgoda.Context.Entries do
+defmodule Cosgoda.EntriesContext do
   @moduledoc """
   The Entries context.
   """
 
   import Ecto.Query, warn: false
   alias Cosgoda.Repo
-  alias Cosgoda.Entity.Entry
+  alias Cosgoda.Entry
 
   @doc """
   Returns the list of entries.

@@ -4,4 +4,8 @@ defmodule CosgodaWeb.UsersResolver do
   def list(_parent, _args, _resolution) do
     {:ok, Context.list}
   end
+
+  def sign_up(_parent, _args, _resolution) do
+    {:ok, Context.list}
+  end
 end

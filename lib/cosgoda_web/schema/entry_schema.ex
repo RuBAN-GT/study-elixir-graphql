@@ -1,19 +1,19 @@
-defmodule CosgodaWeb.EntriesSchema do
+defmodule CosgodaWeb.EntrySchema do
   alias CosgodaWeb.EntriesResolver, as: Resolver
 
   use Absinthe.Schema.Notation
 
+  @desc "Entry as data unit"
   object :entry do
-    @desc "Entry as data unit"
-    field :id, :id
-    field :name, :string
+    field :id, non_null(:id)
+    field :name, non_null(:string)
     field :description, :string
-    field :inserted_at, :string
+    field :inserted_at, non_null(:string)
     field :updated_at, :string
   end
 
   input_object :new_entry_params do
-    field :name, :string
+    field :name, non_null(:string)
     field :description, :string
   end
 

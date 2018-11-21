@@ -1,8 +1,8 @@
 defmodule CosgodaWeb.Schema do
   use Absinthe.Schema
 
-  import_types CosgodaWeb.EntriesSchema
-  import_types CosgodaWeb.UsersSchema
+  import_types CosgodaWeb.EntrySchema
+  import_types CosgodaWeb.UserSchema
 
   query do
     import_fields :entry_query
@@ -11,5 +11,6 @@ defmodule CosgodaWeb.Schema do
 
   mutation do
     import_fields :entry_mutation
+    import_fields :user_mutation
   end
 end

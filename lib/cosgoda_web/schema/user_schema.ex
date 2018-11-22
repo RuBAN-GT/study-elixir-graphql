@@ -23,6 +23,11 @@ defmodule CosgodaWeb.UserSchema do
     field :users, list_of(:user) do
       resolve &Resolver.list/3
     end
+
+    @desc "Get information about current user"
+    field :me, non_null(:user) do
+      resolve &Resolver.current_user/3
+    end
   end
 
   object :user_mutation do

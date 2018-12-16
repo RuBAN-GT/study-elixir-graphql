@@ -2,9 +2,25 @@ version: '3'
 services:
   db:
     image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
     ports:
-    - "5432:5432"
+    - 5432:5432
+
   redis:
     image: redis
+    restart: always
     ports:
-    - "6379:6379"
+    - 6379:6379
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@cosgoda.com
+      PGADMIN_DEFAULT_PASSWORD: postgres
+    ports:
+      - 8080:80
+    links:
+      - db

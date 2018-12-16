@@ -10,11 +10,10 @@ defmodule CosgodaWeb.Router do
     pipe_through :api
 
     forward "/graphiql",
-      Absinthe.Plug.GraphiQL,
-      schema: CosgodaWeb.Schema
-
+            Absinthe.Plug.GraphiQL,
+            schema: CosgodaWeb.Schema
     forward "/graphql",
-      Absinthe.Plug,
-      schema: CosgodaWeb.Schema
+            Absinthe.Plug,
+            schema: CosgodaWeb.Schema
   end
 end

@@ -26,11 +26,14 @@ defmodule Cosgoda.MixProject do
 
   defp deps do
     [
+      {:argon2_elixir, "~> 1.3"},
       {:absinthe, "~> 1.4.0"},
       {:absinthe_plug, "~> 1.4"},
+      {:comeonin, "~> 4.1"},
       {:ecto_sql, "~> 3.0"},
       {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
+      {:guardian, "~> 1.0"},
+      {:mix_test_watch, "~> 0.8", only: :dev, runtime: false},
       {:phoenix, "~> 1.4.0"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},

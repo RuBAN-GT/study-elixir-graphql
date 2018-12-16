@@ -1,15 +1,10 @@
 defmodule Cosgoda.Application do
-  # See https://hexdocs.pm/elixir/Application.html
-  # for more information on OTP Applications
   @moduledoc false
 
   use Application
 
   def start(_type, _args) do
-    children = [
-      Cosgoda.Repo,
-      CosgodaWeb.Endpoint
-    ]
+    children = [Cosgoda.Repo, CosgodaWeb.Endpoint]
 
     opts = [strategy: :one_for_one, name: Cosgoda.Supervisor]
     Supervisor.start_link(children, opts)

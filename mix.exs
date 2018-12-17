@@ -31,6 +31,8 @@ defmodule Cosgoda.MixProject do
       {:absinthe_plug, "~> 1.4"},
       {:comeonin, "~> 4.1"},
       {:ecto_sql, "~> 3.0"},
+      {:ex_machina, "~> 2.2"},
+      {:faker, "~> 0.11"},
       {:gettext, "~> 0.11"},
       {:guardian, "~> 1.0"},
       {:mix_test_watch, "~> 0.8", only: :dev, runtime: false},

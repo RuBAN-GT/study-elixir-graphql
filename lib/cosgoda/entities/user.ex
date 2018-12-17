@@ -18,8 +18,8 @@ defmodule Cosgoda.User do
     user
     |> cast(attrs, [:email, :login, :password])
     |> validate_required([:email, :login, :password])
-    |> validate_length(:login, min: 3, max: 10)
-    |> validate_length(:password, min: 5, max: 20)
+    |> validate_length(:login, min: 3, max: 30)
+    |> validate_length(:password, min: 3, max: 30)
     |> unique_constraint(:email, downcase: true)
     |> put_password_hash()
   end

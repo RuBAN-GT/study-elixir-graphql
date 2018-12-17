@@ -1,43 +1,55 @@
 defmodule CosgodaWeb.AuthServiceTest do
   use Cosgoda.DataCase
 
+  import Cosgoda.Factory
+
   alias Cosgoda.AccountsContext
   alias CosgodaWeb.AuthService
 
-  @valid_sign_up_params %{email: "user@user.user", login: "sample", password: "sample"}
+  @common_password Faker.Pizza.vegetable()
+
+  def valid_user_params do
+    params_for(:user, %{password: @common_password})
+  end
 
   def user_fixture do
-    @valid_sign_up_params |> AccountsContext.create
+    insert :user, valid_user_params
   end
 
   describe "sign_in/1" do
-    @valid_params %{email: "user@user.user", password: "sample"}
-    @undefined_params %{email: "undefined@user.user", password: "sample"}
-
     test "returns user token with correct data" do
-      user_fixture()
+      params = %{email: user_fixture().email, password: @common_password}
 
-      assert {:ok, token} = AuthService.sign_in(@valid_params)
+      assert {:ok, token} = AuthService.sign_in(params)
       assert is_bitstring(token)
     end
 
     test "returns `Ecto.NoResultsError` for undefined user" do
+      params = %{email: Faker.Internet.email(), password: @common_password}
+
       assert_raise Ecto.NoResultsError, fn ->
-        AuthService.sign_in(@undefined_params)
+        AuthService.sign_in(params)
+      end
+    end
+
+    test "returns `Ecto.NoResultsError` for wrong password of existed user" do
+      params = %{email: user_fixture().email, password: Faker.Lorem.word()}
+
+      assert_raise Ecto.NoResultsError, fn ->
+        AuthService.sign_in(params)
       end
     end
   end
 
   describe "sign_up/1" do
-    @invalid_params %{email: "user@user.user", login: "", password: "sample"}
-
     test "returns user token for newbie user" do
-      assert {:ok, token} = AuthService.sign_up(@valid_sign_up_params)
+      assert {:ok, token} = AuthService.sign_up(valid_user_params)
       assert is_bitstring(token)
     end
 
     test "returns error for invalid params" do
-      assert {:error, _} = AuthService.sign_up(@invalid_params)
+      invalid_params = params_for(:user, %{login: ""})
+      assert {:error, _} = AuthService.sign_up(invalid_params)
     end
   end
 end
